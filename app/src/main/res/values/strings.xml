@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">PizzaDelivery</string>
+    <string name="ordenar">Ordenar</string>
+    <string name="pizzas_de_jorge">Pizzas de Jorge</string>
+    <string name="tipo_pizza">Tipo de Pizza</string>
+    <string name="tipo_de_masa">Tipo de masa</string>
+    <string name="masa_artesanal">Masa artesanal</string>
+    <string name="masa_delgada">Masa delgada</string>
+    <string name="masa_gruesa">Masa Gruesa</string>
+    <string name="complementos">Complementos</string>
+    <string name="extra_jamon">Extra jamon</string>
+    <string name="extra_queso_mozzarella">Extra queso Mozzarella</string>
+    <string name="direccion_de_envio">Direccion de envio</string>
+
+    <string-array name="android_pizzas_arrays">
+        <item>Seleccione un tipo de pizza</item>
+        <item>Pizza Americana</item>
+        <item>Pizza MeetLovert</item>
+        <item>Pizza Hawaina</item>
+        <item>Pizza Super Suprema</item>
+    </string-array>
+
+</resources>

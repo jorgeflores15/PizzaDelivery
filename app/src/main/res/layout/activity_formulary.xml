@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="app.flores.com.pizzadelivery.MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tipo_pizza"/>
+    <Spinner
+        android:id="@+id/spinner_tipo"
+        android:entries="@array/android_pizzas_arrays"
+        android:layout_width="match_parent"
+        android:autofillHints="lol"
+        android:layout_height="wrap_content">
+
+    </Spinner>
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tipo_de_masa"/>
+    <RadioGroup
+        android:id="@+id/tipo_masa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/masa_gruesa"/>
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/masa_delgada"/>
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/masa_artesanal"/>
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/complementos"/>
+
+    <CheckBox
+        android:id="@+id/extra_queso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/extra_queso_mozzarella"
+        />
+    <CheckBox
+        android:id="@+id/extra_jamon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/extra_jamon"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/direccion_de_envio"/>
+
+    <EditText
+        android:id="@+id/direccion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/displayErrors"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="#e60404"
+        android:textSize="22sp" />
+
+    <Button
+        android:id="@+id/btnOrdenar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="ordenar"
+        android:text="@string/ordenar"/>
+</LinearLayout>
