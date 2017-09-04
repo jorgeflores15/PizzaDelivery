@@ -11,7 +11,7 @@
     <VideoView
         android:id="@+id/videoview"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="250dp"
 
         />
 
@@ -27,6 +27,8 @@
             android:layout_centerInParent="true"
             android:drawableRight="@android:drawable/ic_input_add"
             android:onClick="rightIconButton"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="#fff"
             android:padding="10dp"
             android:text="@string/ordenar"/>
 

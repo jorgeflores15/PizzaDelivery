@@ -5,17 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_margin="25dp"
     tools:context="app.flores.com.pizzadelivery.MainActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:text="@string/tipo_pizza"/>
     <Spinner
         android:id="@+id/spinner_tipo"
         android:entries="@array/android_pizzas_arrays"
         android:layout_width="match_parent"
-        android:autofillHints="lol"
+        android:padding="8dp"
+        android:layout_marginBottom="20dp"
         android:layout_height="wrap_content">
 
     </Spinner>
@@ -27,20 +30,24 @@
     <RadioGroup
         android:id="@+id/tipo_masa"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp">
 
         <RadioButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/masa_gruesa"/>
+            android:text="@string/masa_gruesa"
+            android:padding="8dp"/>
         <RadioButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/masa_delgada"/>
+            android:text="@string/masa_delgada"
+            android:padding="8dp"/>
         <RadioButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/masa_artesanal"/>
+            android:text="@string/masa_artesanal"
+            android:padding="8dp"/>
     </RadioGroup>
 
     <TextView
@@ -53,35 +60,36 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/extra_queso_mozzarella"
+        android:padding="8dp"
         />
     <CheckBox
         android:id="@+id/extra_jamon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/extra_jamon"/>
+        android:text="@string/extra_jamon"
+        android:layout_marginBottom="20dp"
+        android:padding="8dp"/>
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/direccion_de_envio"/>
+        android:text="@string/direccion_de_envio" />
 
     <EditText
         android:id="@+id/direccion"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/displayErrors"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:textColor="#e60404"
-        android:textSize="22sp" />
+        android:padding="10dp"/>
 
     <Button
         android:id="@+id/btnOrdenar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:padding="8dp"
+        android:background="@color/colorPrimary"
         android:onClick="ordenar"
-        android:text="@string/ordenar"/>
+        android:text="@string/ordenar"
+        android:textColor="#fff" />
 </LinearLayout>

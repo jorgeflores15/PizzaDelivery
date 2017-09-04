@@ -1,10 +1,19 @@
 package app.flores.com.pizzadelivery;
 
 import android.app.Dialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.media.RingtoneManager;
+import android.os.Handler;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.NotificationCompat;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -18,12 +27,10 @@ import android.widget.Toast;
 public class FormularyActivity extends AppCompatActivity {
 
     private Spinner spinner1;
-    private Button btnOrdenar;
     private EditText direccion ;
     private CheckBox extra_queso ;
     private CheckBox extra_jamon ;
     private RadioGroup tipo_masa;
-    private TextView displayErrors;
 
     int precioPizza=0;
     int precioAdicionalJamon=0;
@@ -48,9 +55,7 @@ public class FormularyActivity extends AppCompatActivity {
         direccion = (EditText) findViewById(R.id.direccion);
         extra_queso = (CheckBox) findViewById(R.id.extra_queso);
         extra_jamon = (CheckBox) findViewById(R.id.extra_jamon);
-        displayErrors = (TextView) findViewById(R.id.displayErrors);
         tipo_masa =(RadioGroup) findViewById(R.id.tipo_masa);
-        btnOrdenar = (Button) findViewById(R.id.btnOrdenar) ;
         extra_queso.setChecked(false);
         extra_jamon.setChecked(false);
 
@@ -107,12 +112,11 @@ public class FormularyActivity extends AppCompatActivity {
                         precioAdicionalJamon = jamonextra;
                     }
                     precioTotal = precioPizza + precioAdicionalQueso + precioAdicionalJamon;
-                    //btnOrdenar.setEnabled(true);
-
-
+                    //Se confiugura la alerta cuando se da click en el boton Ordenar
                     AlertDialog alertDialog = new AlertDialog.Builder(this).create();
                     alertDialog.setTitle("Confirmacion de pedido");
-                    alertDialog.setMessage("Su pedido de " +item+ " con "+ tipoMasa + " a S/. "+precioTotal+" + IGV a la direccion: "+ getDireccion +" Esta en proceso de envio");
+                    alertDialog.setMessage("Su pedido de " +item+ " con "+
+                            tipoMasa + " a S/. "+precioTotal+" + IGV a la direccion: "+ getDireccion +" Esta en proceso de envio");
                     // Alert dialog button
                     alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Aceptar",
                             new DialogInterface.OnClickListener() {
@@ -121,12 +125,36 @@ public class FormularyActivity extends AppCompatActivity {
                                     extra_queso.setChecked(false);
                                     extra_jamon.setChecked(false);
                                     direccion.setText("");
-                                    dialog.dismiss();// use dismiss to cancel alert dialog
                                 }
                             });
                     alertDialog.show();
-                    
                     //////////////////////////////////////////////////////
+                    //Enviar la notificacion despues de 10 segundos:
+                    Intent  intent = new Intent(FormularyActivity.this, SplashActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                    PendingIntent pendingIntent = PendingIntent.getActivity(FormularyActivity.this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
+
+                    // Notification
+                    final Notification notification = new NotificationCompat.Builder(FormularyActivity.this)
+                            .setContentTitle("Pizzeria Jorge")
+                            .setContentText("Su pedido está a punto de llegar")
+                            .setSmallIcon(R.mipmap.ic_launcher)
+                            .setColor(ContextCompat.getColor(this, R.color.colorPrimary))
+                            //.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+                            .setContentIntent(pendingIntent)
+                            .setAutoCancel(true)
+                            .build();
+
+                    // Notification manager
+                    final NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+                    // Esperar 10 segundos ...
+                    new Handler().postDelayed(new Runnable() {
+                        public void run() {
+
+                            notificationManager.notify(0, notification);
+                        }
+                    }, 10000);
 
                     //displayErrors.setText("Su pedido de " +item+ " con "+ tipoMasa + " a S/. "+precioTotal+" + IGV a la direccion: "+ getDireccion +" Esta en proceso de envio");
                 }else {

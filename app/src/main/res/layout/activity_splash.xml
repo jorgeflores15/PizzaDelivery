@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_orange_light"
+    android:background="@android:color/holo_green_dark"
     tools:context="app.flores.com.pizzadelivery.SplashActivity">
 
 
@@ -22,5 +22,6 @@
         android:text="@string/pizzas_de_jorge"
         android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
+        android:textColor="#fff"
         android:textSize="30dp"/>
 </RelativeLayout>
